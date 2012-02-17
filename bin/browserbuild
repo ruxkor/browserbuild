@@ -70,11 +70,10 @@ function handle (path) {
 
   if (stat.isDirectory()) {
     var files = fs.readdirSync(path);
-
     files.forEach(function (f) {
       handle(path + '/' + f);
     });
-  } else {
+  } else if (f.match(/\.js/i)) {
     data += read(path);
   }
 };
